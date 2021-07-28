@@ -1,7 +1,7 @@
 # Assignment the First
 
 ## Part 1
-1. Be sure to upload your Python script.
+1. Be sure to upload your Python script. (See ```read_qscores.py```)
 
 | File name | label |
 |---|---|
@@ -26,8 +26,22 @@
        ![plot4](https://github.com/bioThai/Demultiplex/blob/55257c3ae4d0fc6eb938940225514aca83ed6d32/Assignment-the-first/plot_1294_S1_L008_R4_001.fastq.gz.png)
     
     
-    2. ```Your answer here```
-    3. ```Your answer here```
+    2. What is a good quality score cutoff for index reads and biological read pairs to utilize for sample identification and downstream analysis, respectively? Justify your answer.
+    
+       A good quality score cutoff for index reads might be around 35 since index reads need to be very certain and you don't want any undetermined (N) base calls that would prevent you from accurately matching indexes and identifying corresponding biological reads. From the two index read files above, the first one or two base calls for many of the index sequences are Ns, and these nucleotide positions still have average Qscores above 30. The rest of the nucleotide positions in the index reads have average Qscores of at least 35. So, to be safe, a Qscore minimum around 35 might be a good cutoff for index reads.
+       
+       A good quality score cutoff for biological read pairs might be a little less than for index reads, so perhaps a qscore of around 30 might work. If you set the Qscore for the biological read pairs too high, you might have less data for downstream analysis.
+    
+    
+    3. How many indexes have undetermined (N) base calls? (Utilize your command line tool knowledge. Submit the command(s) you used. CHALLENGE: use a one-line command)
+   
+       Command (on Talapas/Linux): 
+       ```
+       zcat /projects/bgmp/shared/2017_sequencing/1294_S1_L008_R2_001.fastq.gz /projects/bgmp/shared/2017_sequencing/1294_S1_L008_R3_001.fastq.gz | sed -n "2~4p" | grep -c "N"
+       ```
+       Number of indexes with undetermined base calls: 7304664
+       
+       
     
 ## Part 2
 1. Define the problem
