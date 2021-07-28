@@ -12,6 +12,20 @@
 
 2. Per-base NT distribution
     1. Use markdown to insert your 4 histograms here.
+        
+       Distribution for 1294_S1_L008_R1_001.fastq.gz:
+       ![plot1](https://github.com/bioThai/Demultiplex/blob/55257c3ae4d0fc6eb938940225514aca83ed6d32/Assignment-the-first/plot_1294_S1_L008_R1_001.fastq.gz.png)
+       
+       Distribution for 1294_S1_L008_R2_001.fastq.gz:
+       ![plot2](https://github.com/bioThai/Demultiplex/blob/55257c3ae4d0fc6eb938940225514aca83ed6d32/Assignment-the-first/plot_1294_S1_L008_R2_001.fastq.gz.png)
+       
+       Distribution for 1294_S1_L008_R3_001.fastq.gz:
+       ![plot3](https://github.com/bioThai/Demultiplex/blob/55257c3ae4d0fc6eb938940225514aca83ed6d32/Assignment-the-first/plot_1294_S1_L008_R3_001.fastq.gz.png)
+       
+       Distribution for 1294_S1_L008_R4_001.fastq.gz:
+       ![plot4](https://github.com/bioThai/Demultiplex/blob/55257c3ae4d0fc6eb938940225514aca83ed6d32/Assignment-the-first/plot_1294_S1_L008_R4_001.fastq.gz.png)
+    
+    
     2. ```Your answer here```
     3. ```Your answer here```
     
