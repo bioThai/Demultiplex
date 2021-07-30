@@ -46,7 +46,7 @@
 ## Part 2
 1. Define the problem
 
-   There are biological reads in the provided FASTQ files which have incorrect indexes due to index hopping/swapping. Other reads may have missing/unknown/low-quality-score indexes. We need to demultiplex all reads, figure out which reads have hopped indexes, which reads have unknown/low quality indexes, and separate these reads from each correctly-indexed read. In addition, for each biological read file, each correctly-indexed read needs to be separated into different bins/files based on their indexes. As each read is processed, the sequence of the index pairs corresponsiding to each read need to be appended to the end of the header line in the FASTQ file.
+   There are biological reads in the provided FASTQ files which have incorrect indexes due to index hopping/swapping. Other reads may have unmatched/low-quality-score indexes. We need to demultiplex all reads, figure out which reads have hopped indexes, which reads have unmatched/low quality indexes, and separate these reads from each correctly-indexed read. In addition, for each biological read file, each correctly-indexed read needs to be separated into different bins/files based on their indexes. As each read is processed, the sequence of the index pairs corresponsiding to each read need to be appended to the end of the header line in the FASTQ file.
 
 2. Describe output
 
@@ -128,7 +128,4 @@
         #test example: If "?" is the inputted argument, the return value of function is 30.
         
         return(phred_value)
-        
-   
- 
     ```
