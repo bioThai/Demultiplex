@@ -73,40 +73,33 @@
             create/open a file to hold the FASTQ reads w/ummatched or low-q-score indexes
             
    Open all FASTQ read files (R1, R2, R3, R4)
-        Read each record in R1, R2, R3, R4 file:
+        Create a 2D string array (4 rows, 4 columns) to temporarily hold each line of the current record being read for each of the 4 input files:
+
+        Read each record in R1, R2, R3, R4 files:
             For each file:
-                Extract header line, store in a string variable
-                Extract seq line, store in a string variable
-                Extract "+" line, store in string variable
-                Extract qscore line, store in string variable
-                Extract qscore line (4th line of record), store in string variable
+                Extract header line, store in 2D array
+                Extract seq line, store in 2D array
+                Extract "+" line, store in 2D array
+                Extract qscore line (4th line of record), store in 2D array
+                
             If (seq line of index 1 file (R2) or seq line of index 2 file (R3) contains "N"), 
-            or (if any qscores in the qscore line for index 1 file(R2) or qscore in qscore line for index 2 (R3) < qscore_cutoff):
-                Write record to "unmatched/low-qscore" output file
+            or (if any qscores in the qscore line for index 1 file(R2) or qscore in qscore line for index 2 (R3) < qscore_cutoff),
+            or (if seq line of index 1 file (R2) or seq line of index 2 file (R3) are not in the index dictionary):
+                Add seq line of index 1 file (R2) and seq line of index 2 file (R3) to the end of header line variables for R1 and R4 
+                Write record to appropriate "unmatched/low-qscore" output file
                 unmatched_or_lowQ_counter += 1
             Else:
                 If seq line of index 1 file (R2) == rev comp of seq line of index 2 file (R3):
+                    Add seq line of index 1 file (R2) and seq line of index 2 file (R3) to the end of header line variables for R1 and R4 
                     Determine which output bucket file to put the record in
-                    Increment counter of records in each bucket file (<bucket>_counter += 1)
+                    Write record to appropriate output bucket file
+                    Increment counter of records in for corresponding bucket (<bucket>_counter += 1)
                 Else (if you have swapped indexes that aren't rev complements of each other):
-                    Write record to "swapped" output file
+                    Add seq line of index 1 file (R2) and seq line of index 2 file (R3) to the end of header line variables for R1 and R4 
+                    Write record to appropriate "swapped" output file
                     swapped_counter += 1
-                
-                
-            If corresponding index sequences in R2 and R3 file are both in the index dictionary
-            If seq line of index 1 file (R2) == rev comp of seq line of index 2 file (R3):
-                If seq line of index 1 file (R2) and seq line of index 2 file (R3) matches any of the indexes from indexes.txt and also contains no "N":
-                    
-                    
-                write record in appropriate output bucket file
-            Else:
-                If seq line of index 1 file (R2) and seq line of index 2 file (R3) matches any of the indexes from indexes.txt:
-                    write record in "swapped" output file
-                Else:    
-                    write record to "unmatched/low-qscore" output file
-                    
-                
-           
+    Close all input and output files                 
+ 
    ```
 
 5. High level functions. For each function, be sure to include:
