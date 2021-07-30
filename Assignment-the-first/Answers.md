@@ -46,12 +46,30 @@
 ## Part 2
 1. Define the problem
 
-    There are reads in the FASTQ files with incorrect indexes due to index hopping/swapping. We need to figure out which reads have hopped indexes, and separate the reads which have hopped
-
+   There are biological reads in the provided FASTQ files which have incorrect indexes due to index hopping/swapping. Other reads may have missing/unknown/low-quality-score indexes. We need to demultiplex all reads, figure out which reads have hopped indexes, which reads have unknown/low quality indexes, and separate these reads from each correctly-indexed read. In addition, for each biological read file, each correctly-indexed read needs to be separated into different bins/files based on their indexes. As each read is processed, the sequence of the index pairs corresponsiding to each read need to be appended to the end of the header line in the FASTQ file.
 
 2. Describe output
+
+   The output of the demultiplexing algorithm is 26 FASTQ files for each of the two input biological read FASTQ files (total of 52 FASTQ files). For each input read file, there are 24 output FASTQ files, with each file containing all the correctly-indexed reads for a specific index-pair (correct index sequences are listed in ```indexes.txt``` file on Talapas). In addition, for each input read file, there is also a 25th output FASTQ file for all the reads with hopped indexes, and a 26th output FASTQ file for all the reads with indexes that don't match the indexes in the indexes.txt file and/or indexes with low-quality scores.
+   
+   The algorithm should also output useful data such as the number of records/reads in each of the above output files.
+
+
 3. Upload your [4 input FASTQ files](../TEST-input_FASTQ) and your [>=6 expected output FASTQ files](../TEST-output_FASTQ).
+
+   See uploaded files in repo.
+
+
 4. Pseudocode
+
+   Parse each index FASTQ file.
+        Put each index record into a dictionary: 
+            key = the "name" (A1, B1, C9, etc) of each index record, value = actual index sequence
+   Parse ```indexes.txt``` file.
+        For each input biological read file (R1, R4 files), 
+            create/open files for each 
+
+
 5. High level functions. For each function, be sure to include:
     1. Description/doc string
     2. Function headers (name and parameters)
