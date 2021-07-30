@@ -62,13 +62,16 @@
 
 4. Pseudocode
 
-   Parse each index FASTQ file.
-        Put each index record into a dictionary: 
-            key = the "name" (A1, B1, C9, etc) of each index record, value = actual index sequence
-   Parse ```indexes.txt``` file.
+   ```
+   Parse indexes.txt file to get the correct index sequences you're supposed to see in the FASTQ read files.
+        Put each index into a dictionary: 
+            key = the "name" (A1, B1, C9, etc) of each index, value = actual index sequence
         For each input biological read file (R1, R4 files), 
-            create/open files for each 
-
+            create/open files to hold the FASTQ reads for each index in the dictionary
+            create/open a file to hold the FASTQ reads w/swapped indexes
+            create/open a file to hold the FASTQ reads for 
+           
+   ```
 
 5. High level functions. For each function, be sure to include:
     1. Description/doc string
