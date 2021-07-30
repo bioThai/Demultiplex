@@ -107,3 +107,28 @@
     2. Function headers (name and parameters)
     3. Test examples for individual functions
     4. Return statement
+
+    ```
+    def rev_comp(sequence: str) -> str:
+        '''Takes an input sequence string (written 5' to 3' from left to right) and returns the reverse complement as a string (written from 5' to 3' from left to right).'''
+        #code to go through each character in sequence, 
+        #replace each character with its complementary base, 
+        #reverse the order of the string using string slicing
+        #assign the reversed string to a variable
+        
+        #test example: if "ATG" is the inputted argument, the return value of function is "CAT".
+        
+        return reverse_complement
+ 
+ 
+    def convert_phred(Qscore_character: str) -> int:
+        '''Converts a single character into an integer phred score.'''
+        phred_value = ord(letter) - 33
+        
+        #test example: If "?" is the inputted argument, the return value of function is 30.
+        
+        return(phred_value)
+        
+   
+ 
+    ```
