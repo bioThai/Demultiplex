@@ -128,4 +128,14 @@
         #test example: If "?" is the inputted argument, the return value of function is 30.
         
         return(phred_value)
+        
+        
+    def get_args():
+        '''Defines/sets possible command line arguments for script'''
+        #code for command line argument options
+        #example:   
+        parser.add_argument("-f", nargs="+", help="specifies input FASTQ filename(s)", type=str, required=True)
+
+        return parser.parse_args()
+
     ```
