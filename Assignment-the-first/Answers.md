@@ -73,12 +73,15 @@
             create/open a file to hold the FASTQ reads w/ummatched or low-q-score indexes
             
    Open all FASTQ read files (R1, R2, R3, R4)
-        Read each record in R1 file:
-            Extract header line, store in a string variable
-            EXtract seq line, store in a string variable
-            Extract "+" line, store in string variable
-            Extract qscore line, store in string variable
-                Once the qscore line (4th line of record) is read, determine if 
+        Read each record in R1, R2, R3, R4 file:
+            For each file:
+                Extract header line, store in a string variable
+                EXtract seq line, store in a string variable
+                Extract "+" line, store in string variable
+                Extract qscore line, store in string variable
+                Extract qscore line (4th line of record), store in string variable
+            If seq line of index 1 file (R2) == rev comp of seq line of index 2 file (R3):
+                
            
    ```
 
