@@ -66,10 +66,19 @@
    Parse indexes.txt file to get the correct index sequences you're supposed to see in the FASTQ read files.
         Put each index into a dictionary: 
             key = the "name" (A1, B1, C9, etc) of each index, value = actual index sequence
-        For each input biological read file (R1, R4 files), 
-            create/open files to hold the FASTQ reads for each index in the dictionary
+        For each input biological read file (R1, R4 files): 
+            For each index in dictionary:
+                create/open files to hold the FASTQ reads for each of these indexes
             create/open a file to hold the FASTQ reads w/swapped indexes
-            create/open a file to hold the FASTQ reads for 
+            create/open a file to hold the FASTQ reads w/ummatched or low-q-score indexes
+            
+   Open all FASTQ read files (R1, R2, R3, R4)
+        Read each record in R1 file:
+            Extract header line, store in a string variable
+            EXtract seq line, store in a string variable
+            Extract "+" line, store in string variable
+            Extract qscore line, store in string variable
+                Once the qscore line (4th line of record) is read, determine if 
            
    ```
 
