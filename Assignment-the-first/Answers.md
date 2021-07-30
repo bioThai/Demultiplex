@@ -57,7 +57,7 @@
 
 3. Upload your [4 input FASTQ files](../TEST-input_FASTQ) and your [>=6 expected output FASTQ files](../TEST-output_FASTQ).
 
-   See uploaded files in repo.
+   See uploaded files in Demultiplex repo.
 
 
 4. Pseudocode
