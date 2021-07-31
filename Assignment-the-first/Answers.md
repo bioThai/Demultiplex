@@ -77,10 +77,10 @@
 
         Read each record in R1, R2, R3, R4 files:
             For each file:
-                Extract header line, store in 2D array
-                Extract seq line, store in 2D array
-                Extract "+" line, store in 2D array
-                Extract qscore line (4th line of record), store in 2D array
+                Read header line, store in 2D array
+                Read seq line, store in 2D array
+                Read "+" line, store in 2D array
+                Read qscore line (4th line of record), store in 2D array
                 
             If (seq line of index 1 file (R2) or seq line of index 2 file (R3) contains "N"), 
             or (if any qscores in the qscore line for index 1 file(R2) or qscore in qscore line for index 2 (R3) < qscore_cutoff),
