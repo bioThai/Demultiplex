@@ -59,8 +59,8 @@ def get_output_files_dict(read1_file: str, read2_file: str, ref_indexes_dict: di
     read2_outfile: str = ""
 
     #split the absolute filepaths stored in read1_file and read2_file based on "/", and extract only the name of the file itself (relative to current directory)
-    read1_file = read1_file.split("/")[-1]
-    read2_file = read2_file.split("/")[-1]
+    read1_file = read1_file.split("/")[-1].strip(".gz")
+    read2_file = read2_file.split("/")[-1].strip(".gz")
 
     #create output filenames for each index, for each input read file (48 filenames)
     for ref_index_seq, ref_index_name in list(ref_indexes_dict.items()):
