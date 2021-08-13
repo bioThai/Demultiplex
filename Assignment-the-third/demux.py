@@ -165,7 +165,8 @@ def parse_input_files(read1_file: str, read2_file: str, index1_file: str, index2
     #open all output files for writing
     for ref_index_seq in output_files_dict:
         for output_file in output_files_dict[ref_index_seq]:
-            fh = gzip.open(output_file, 'wt')
+            #fh = gzip.open(output_file, 'wt')
+            fh = open(output_file, "w") #much faster than outputting/writing into gzipped files
             output_fh_dict[ref_index_seq].append(fh)
 
     #demultiplex each biological read record in each input file
