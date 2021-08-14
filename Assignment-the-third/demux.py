@@ -1,6 +1,7 @@
 #!/bin/python
 import argparse
 import gzip     #needed to open/read gzipped files and write to gzipped files
+import matplotlib.pyplot as plt
 
 def get_args():
     '''Defines/sets possible command line arguments for script'''
@@ -140,10 +141,10 @@ def parse_input_files(read1_file: str, read2_file: str, index1_file: str, index2
     record_counters_dict: dict = {} #keys: holds index sequences of each reference index from output_files_dict. For swapped and unknown/low-qscore files, key holds "swapped" or "unknown_lowQ".
                                     #values: Holds an integer counter of number of read-pairs with each index sequence. 
     record_counts_filename: str = "demux_final_report.tsv"
+    read_record_count: int = 0  #holds count of number of records read from input read files
+
     sum_of_reads: int = 0
     percent_of_reads: float = 0
-
-    read_record_count: int = 0  #holds count of number of records read from input read files
 
     #initialize values of output_fh_dict
     for key in output_files_dict:
@@ -245,13 +246,21 @@ def parse_input_files(read1_file: str, read2_file: str, index1_file: str, index2
     #write final demux stats to output TSV file
     with open(record_counts_filename, "w") as output_stats_fh:
         output_stats_fh.write("Bucket" + "\t" + "Number_of_Read_Pairs" + "\t" + "Percentage_of_Reads" + "\n")
+        
         sum_of_reads = sum(list(record_counters_dict.values()))
         for index_seq in record_counters_dict:
             percent_of_reads = (record_counters_dict[index_seq] / sum_of_reads) * 100
             output_stats_fh.write(index_seq + "\t" + str(record_counters_dict[index_seq]) + "\t" + str(percent_of_reads) + "\n")
-
-    #plot distribution/percentages of reads from each bucket
-
+        
+        output_stats_fh.write("\nTotal_read_pairs:\t" + str(sum_of_reads) + "\n")
+        
+    #plot distribution of read-pairs from each bucket
+    plt.bar(list(record_counters_dict.keys()), list(record_counters_dict.values()), color="darkcyan")
+    plt.title("Number of Read-Pairs in each Index Bucket Category")
+    plt.xlabel("Index Bucket")
+    plt.ylabel("Number of Read Pairs")
+    plt.xticks(rotation=-90)    #rotate x-labels
+    plt.savefig("demux_final_plot.png", bbox_inches="tight")    #bbox_inches="tight" makes the entire figure visible so it doesn't get cut off if labels are too long
 
 def main():
     '''Main function, drives the order of execution for script'''
